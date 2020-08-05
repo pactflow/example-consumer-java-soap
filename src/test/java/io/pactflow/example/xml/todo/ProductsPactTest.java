@@ -24,7 +24,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.isEmptyString;
+import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.not;
 
 @ExtendWith(PactConsumerTestExt.class)
@@ -56,7 +56,7 @@ public class ProductsPactTest {
       assertThat(project.getId(), is(greaterThan(0)));
       assertThat(project.getType(), is("activity"));
       assertThat(project.getName(), is("Project 1"));
-      assertThat(project.getDue(), not(isEmptyString()));
+      assertThat(project.getDue(), not(emptyString()));
       assertThat(project.getTasks().getTasks(), hasSize(5));
     });
   }

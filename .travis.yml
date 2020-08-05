@@ -4,17 +4,15 @@ os: linux
 jdk:
 - openjdk11
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 script:
 - make ci
 env:
   global:
   - PACT_BROKER_BASE_URL=https://dius.pactflow.io
-  # PACT_BROKER_TOKEN
-  - secure: "IXxQXupweQDSgEiXIwmgefCeoj0cqH9lyRQKNURWm/P7qg9DSFcUpzk+2pvgLlQx0iwxVd9cuv6PxW1kguH0KeLVv1cp3K0Nt1j15XpKlZwMz99J+SSDkeGcdzicxO3YadH71WhA7GeP/1008Acp2fda1A5FvXM4DhvFflhwrE26sKNMc89gPT7s1DBPwcRYbm/DsFRkPkUq7bNVGr3FSYKakyaeVtgOtPNj3SdRPnhRpUl4IJgTuwu5Emn4heHQjNc5fhRBZSv1HM7tLR7mMbSLFqe5/fNcxih4J836tZFXXJdWbigdJt97sgS5Z1OFopjki9imHr0SaUbvoXzWuQuglnJ9nANH2zVPkH/QcU9Emdo+eWesJhNfIT1dJQCC+EnXI4Wj0PlEdmzDtVvO93JQ36nZvdmJKmaeDWrOmic+hCt287972jKpDehGX6p64OsATk743vaqbA//lAWXFmbAsCztIsximDvBnoCTVOzMLh4iU/u+F5vrbLxcIwlia7Ij/yl6lB+bP/w2BvRU6ghcR+BJBeHRuP13F0XPao4CNut23nQpEasJYQ6xOBjZsvUgZOOYcQDhd3TSnuhex7ry6BbAlcpkBqrM6uSSkNpBf2SlOEOeLUIB8FiEhG3GMbBUWp3aYRMIQtHuY6LOWrc1OFVeTsUVc0fYU1BD8W8="
-
+  - secure: ZRCE/ZJTbhmEsrBcG7+bU7Uc33+vpdd00KR/TLGYft3RFJiGzr+/le7mhYBp+55r5FKGRasLfNH8TJTsvEpW3K21ss8t9TwHTSNQE/l9VvuFkEZbhc0j4IUbt3iAiqeBhYD5uw56LTIEvG2C3/MzEhfyYEpl5PYROXDIF/64n3FVYCetyNSdEsDpDji2jqhWM4b0JkJ0IKkUbj6JkHFhFUbyt+NHkx2Ri6xh0CnlpSnv6998UwF+zp/MgiwmWrnU0+ElOq/X08xwnoTl/VAOyGAqGojn7k9H/VvLlFIIgSNhNTAPE22IUMTyM9mvlV6txifBv5v0r1DQqkSwDuKbV1MpBdGAikGnrJN8sQbRqGnOcXxGKbFpU+w/bDYMg5sP26n9giC9b6jXZukimbfv82S49A+cgGn6Z+RUj42QuUlXpdX1fc1QetKCNYD70IQJAUwrhP36ghHz1gDfnQjKjt4pzd7dn6qQ46vZfCd/YsSJD51wkhfqMWX2QLDjd4Pa111N6VMEDk4rRe5f4WEat0AnCd6TxJIvyPgdhkfnVYd/LSfXxblxKoZI+eC/OQzbVLHiI/cHbDnZYoFadQc7QtAdA9qSewCZv2DR7f0sbUKl6IBk440T2PdX9beQVGmX9CqX2jMFqBB0SatYRoK2L4JbyrgAZZ74ZKftHOeGtxA=

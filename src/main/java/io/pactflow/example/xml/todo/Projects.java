@@ -7,7 +7,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
 
+@Data
 @XmlRootElement(name = "projects", namespace = "http://some.namespace/and/more/stuff")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Projects {
@@ -16,20 +18,4 @@ public class Projects {
 
   @XmlAttribute(name = "id")
   private String id;
-
-  public List<Project> getProjects() {
-    return projects;
-  }
-
-  public void setProjects(List<Project> projects) {
-    this.projects = projects;
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
 }

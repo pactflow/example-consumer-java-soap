@@ -37,10 +37,10 @@ public class ProductsPactTest {
         .headers(mapOf("Content-Type", "application/xml")).status(200)
         .body(new PactXmlBuilder("projects", "http://some.namespace/and/more/stuff").build(root -> {
           root.setAttributes(mapOf("id", "1234"));
-          root.eachLike("project", 2, mapOf("id", integer(), "type", "activity", "name", string("Project 1"), "due",
+          root.eachLike("project", 1, mapOf("id", integer(), "type", "activity", "name", string("Project 1"), "due",
               timestamp("yyyy-MM-dd'T'HH:mm:ss.SSSX", "2016-02-11T09:46:56.023Z")), project -> {
                 project.appendElement("tasks", Collections.emptyMap(), task -> {
-                  task.eachLike("task", 5, mapOf("id", integer(), "name", string("Task 1"), "done", bool(true)));
+                  task.eachLike("task", 1, mapOf("id", integer(), "name", string("Task 1"), "done", bool(true)));
                 });
               });
         })).toPact();
@@ -51,13 +51,13 @@ public class ProductsPactTest {
   public void testGeneratesAListOfTODOsForTheMainScreen(MockServer mockServer) throws IOException {
     Projects projects = new Todo().setUrl(mockServer.getUrl()).getProjects();
     assertThat(projects.getId(), is("1234"));
-    assertThat(projects.getProjects(), hasSize(2));
+    assertThat(projects.getProjects(), hasSize(1));
     projects.getProjects().forEach(project -> {
       assertThat(project.getId(), is(greaterThan(0)));
       assertThat(project.getType(), is("activity"));
       assertThat(project.getName(), is("Project 1"));
       assertThat(project.getDue(), not(emptyString()));
-      assertThat(project.getTasks().getTasks(), hasSize(5));
+      assertThat(project.getTasks().getTasks(), hasSize(1));
     });
   }
 

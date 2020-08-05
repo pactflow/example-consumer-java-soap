@@ -30,6 +30,8 @@ fake_ci: .env
 
 
 publish_pacts: .env
+	# Hack because of matcher issues
+	@sed -i 's/\.\[/\[/g' ./build/pacts/pactflow-example-consumer-java-soap-pactflow-example-provider-java-soap.json
 	@"${PACT_CLI}" publish ${PWD}/build/pacts --consumer-app-version ${TRAVIS_COMMIT} --tag ${TRAVIS_BRANCH}
 
 ## =====================

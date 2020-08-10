@@ -1,21 +1,25 @@
-package io.pactflow.example.xml.todo;
+package io.pactflow.example.xml.consumer.todo;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.ArrayList;
-import java.util.List;
 import lombok.Data;
 
 @Data
-@XmlRootElement(name = "projects", namespace = "http://some.namespace/and/more/stuff")
+@XmlRootElement(name = "project")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Projects {
-  @XmlElement(name = "project", type = Project.class)
-  private List<Project> projects = new ArrayList<>();
-
+public class Project {
   @XmlAttribute(name = "id")
-  private String id;
+  private int id;
+  @XmlAttribute(name = "type")
+  private String type;
+  @XmlAttribute(name = "name")
+  private String name;
+  @XmlAttribute(name = "due")
+  private String due;
+
+  @XmlElement(name = "tasks")
+  private Tasks tasks;
 }

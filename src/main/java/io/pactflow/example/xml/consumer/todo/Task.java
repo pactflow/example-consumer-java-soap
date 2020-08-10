@@ -1,25 +1,19 @@
-package io.pactflow.example.xml.todo;
+package io.pactflow.example.xml.consumer.todo;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 
 @Data
-@XmlRootElement(name = "project")
+@XmlRootElement(name = "task")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Project {
+public class Task {
   @XmlAttribute(name = "id")
   private int id;
-  @XmlAttribute(name = "type")
-  private String type;
   @XmlAttribute(name = "name")
   private String name;
-  @XmlAttribute(name = "due")
-  private String due;
-
-  @XmlElement(name = "tasks")
-  private Tasks tasks;
+  @XmlAttribute(name = "done")
+  private Boolean done;
 }

@@ -1,4 +1,4 @@
-package io.pactflow.example.xml.todo;
+package io.pactflow.example.xml.consumer.todo;
 
 import org.apache.http.client.fluent.Request;
 

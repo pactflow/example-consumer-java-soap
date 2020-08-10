@@ -1,4 +1,4 @@
-package io.pactflow.example.xml.todo;
+package io.pactflow.example.xml.consumer.todo;
 
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +38,7 @@ public class ProductsPactTest {
         .body(new PactXmlBuilder("projects", "http://some.namespace/and/more/stuff").build(root -> {
           root.setAttributes(mapOf("id", "1234"));
           root.eachLike("project", 1, mapOf("id", integer(), "type", "activity", "name", string("Project 1"), "due",
-              timestamp("yyyy-MM-dd'T'HH:mm:ss.SSSX", "2016-02-11T09:46:56.023Z")), project -> {
+              timestamp("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", "2016-02-11T09:46:56.023Z")), project -> {
                 project.appendElement("tasks", Collections.emptyMap(), task -> {
                   task.eachLike("task", 1, mapOf("id", integer(), "name", string("Task 1"), "done", bool(true)));
                 });

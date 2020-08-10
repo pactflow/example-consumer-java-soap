@@ -32,18 +32,25 @@ import static org.hamcrest.Matchers.not;
 public class ProductsPactTest {
   @Pact(consumer = "pactflow-example-consumer-java-soap")
   public RequestResponsePact projects(PactDslWithProvider builder) {
-    return builder.given("i have a list of projects").uponReceiving("a request for projects in XML").path("/projects")
-        .query("from=today").headers(mapOf("Accept", "application/xml")).willRespondWith()
-        .headers(mapOf("Content-Type", "application/xml")).status(200)
-        .body(new PactXmlBuilder("projects", "http://some.namespace/and/more/stuff").build(root -> {
-          root.setAttributes(mapOf("id", "1234"));
-          root.eachLike("project", 1, mapOf("id", integer(), "type", "activity", "name", string("Project 1"), "due",
-              timestamp("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", "2016-02-11T09:46:56.023Z")), project -> {
-                project.appendElement("tasks", Collections.emptyMap(), task -> {
-                  task.eachLike("task", 1, mapOf("id", integer(), "name", string("Task 1"), "done", bool(true)));
-                });
-              });
-        })).toPact();
+    return builder
+            .given("i have a list of projects")
+            .uponReceiving("a request for projects in XML")
+              .path("/projects")
+              .query("from=today")
+              .headers(Map.of("Accept", "application/xml"))
+            .willRespondWith()
+              .headers(Map.of("Content-Type", "application/xml"))
+              .status(200)
+            .body(new PactXmlBuilder("projects", "http://some.namespace/and/more/stuff").build(root -> {
+              root.setAttributes(Map.of("id", "1234"));
+              root.eachLike("project", 1, Map.of("id", integer(), "type", "activity", "name", string("Project 1"), "due",
+                  timestamp("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", "2016-02-11T09:46:56.023Z")), project -> {
+                    project.appendElement("tasks", Collections.emptyMap(), task -> {
+                      task.eachLike("task", 1, Map.of("id", integer(), "name", string("Task 1"), "done", bool(true)));
+                    });
+                  });
+            }))
+            .toPact();
   }
 
   @PactTestFor(pactMethod = "projects")
@@ -59,19 +66,5 @@ public class ProductsPactTest {
       assertThat(project.getDue(), not(emptyString()));
       assertThat(project.getTasks().getTasks(), hasSize(1));
     });
-  }
-
-  private <T> Map<String, T> mapOf(String key, T value) {
-    return MapUtils.putAll(new HashMap<>(), new Object[] { key, value });
-  }
-
-  private Map<String, Object> mapOf(String key1, Object value1, String key2, Object value2, String key3,
-      Object value3) {
-    return MapUtils.putAll(new HashMap<>(), new Object[] { key1, value1, key2, value2, key3, value3 });
-  }
-
-  private Map<String, Object> mapOf(String key1, Object value1, String key2, Object value2, String key3, Object value3,
-      String key4, Object value4) {
-    return MapUtils.putAll(new HashMap<>(), new Object[] { key1, value1, key2, value2, key3, value3, key4, value4 });
   }
 }

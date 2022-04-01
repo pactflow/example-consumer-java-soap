@@ -6,7 +6,7 @@
 
 [![Pact Status](https://testdemo.pactflow.io/pacts/provider/pactflow-example-provider-java-soap/consumer/pactflow-example-consumer-java-soap/latest/badge.svg)](https://testdemo.pactflow.io/pacts/provider/pactflow-example-provider-java-soap/consumer/pactflow-example-consumer-java-soap/latest) (latest pact)
 
-[![Pact Status](https://testdemo.pactflow.io/pacts/provider/pactflow-example-provider-java-soap/consumer/pactflow-example-consumer-java-soap/latest/master/badge.svg)](https://testdemo.pactflow.io/pacts/provider/pactflow-example-provider-java-soap/consumer/pactflow-example-consumer-java-soap/latest/master) (master/master pact)
+[![Pact Status](https://testdemo.pactflow.io/pacts/provider/pactflow-example-provider-java-soap/consumer/pactflow-example-consumer-java-soap/latest/master/badge.svg)](https://testdemo.pactflow.io/pacts/provider/pactflow-example-provider-java-soap/consumer/pactflow-example-consumer-java-soap/latest/master) (master/master pact) 
 
 This is an example of a Java SOAP consumer that uses Pact, [Pactflow](https://pactflow.io) and GitHub Actions to ensure that it is compatible with the expectations its consumers have of it.
 

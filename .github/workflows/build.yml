@@ -19,7 +19,7 @@ jobs:
       # note currently PACT_PROVIDER isn't used in the code
         pact_provider:
           [
-            "pactflow-example-provider-java-kafka",
+            "pactflow-example-provider-java-soap",
             # "pactflow-example-bi-directional-provider-dredd",
             # "pactflow-example-bi-directional-provider-restassured",
             # "pactflow-example-bi-directional-provider-postman",

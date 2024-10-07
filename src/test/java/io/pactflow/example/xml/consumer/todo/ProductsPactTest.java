@@ -8,8 +8,8 @@ import au.com.dius.pact.consumer.junit5.PactConsumerTestExt;
 import au.com.dius.pact.consumer.junit5.PactTestFor;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.consumer.xml.PactXmlBuilder;
+import au.com.dius.pact.core.model.PactSpecVersion;
 import au.com.dius.pact.core.model.RequestResponsePact;
-import org.apache.commons.collections4.MapUtils;
 import au.com.dius.pact.consumer.MockServer;
 import static au.com.dius.pact.consumer.dsl.Matchers.bool;
 import static au.com.dius.pact.consumer.dsl.Matchers.integer;
@@ -17,7 +17,6 @@ import static au.com.dius.pact.consumer.dsl.Matchers.string;
 import static au.com.dius.pact.consumer.dsl.Matchers.timestamp;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -53,7 +52,7 @@ public class ProductsPactTest {
             .toPact();
   }
 
-  @PactTestFor(pactMethod = "projects")
+  @PactTestFor(pactMethod = "projects", pactVersion = PactSpecVersion.V3)
   @Test
   public void testGeneratesAListOfTODOsForTheMainScreen(MockServer mockServer) throws IOException {
     Projects projects = new Todo().setUrl(mockServer.getUrl()).getProjects();

@@ -28,7 +28,7 @@ dependencies {
   compileOnly 'org.projectlombok:lombok'
   annotationProcessor 'org.projectlombok:lombok'
 
-  testImplementation 'au.com.dius.pact.consumer:junit5:4.6.19'
+  testImplementation 'au.com.dius.pact.consumer:junit5:4.6.20'
   testImplementation('org.springframework.boot:spring-boot-starter-test') {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
